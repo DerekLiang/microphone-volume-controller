@@ -7,7 +7,7 @@
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
                       
-        Title="{ Binding MicrophoneLevel, StringFormat={}Micophone Volume - {0}%}" Height="66" Width="538" MinHeight="66" MaxHeight="66" Activated="MetroWindow_Activated" Deactivated="MetroWindow_Deactivated">
+        Title="{ Binding MicrophoneLevel, StringFormat={}Micophone Volume - {0}%}" Height="66" Width="538" MinHeight="66" MaxHeight="66" Activated="MetroWindow_Activated" Deactivated="MetroWindow_Deactivated" Closing="MetroWindow_Closing">
     <Grid>
         <Slider Orientation="Horizontal" 
             Value="{Binding MicrophoneLevel, Mode=TwoWay}" 

@@ -29,6 +29,9 @@ namespace VolumeControl
             InitializeComponent();
             DataContext = this;
 
+            Settings = new Settings();
+            MicrophoneLevel = Settings.DefaultVolume;
+
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
@@ -49,6 +52,7 @@ namespace VolumeControl
 
 
         private List<UnsignedMixerControl> volumeControlList = new List<UnsignedMixerControl>();
+        private Settings Settings;
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
@@ -86,5 +90,12 @@ namespace VolumeControl
             this.Topmost = true;
             this.Activate();
         }
+
+        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Settings.DefaultVolume = MicrophoneLevel;
+            Settings.Save();
+        }
+
     }
 }
