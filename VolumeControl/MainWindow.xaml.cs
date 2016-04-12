@@ -75,5 +75,16 @@ namespace VolumeControl
                 }
             }
         }
+
+        private void MetroWindow_Activated(object sender, EventArgs e)
+        {
+            this.Topmost = true;
+        }
+
+        private void MetroWindow_Deactivated(object sender, EventArgs e)
+        {
+            this.Topmost = true;
+            this.Activate();
+        }
     }
 }
